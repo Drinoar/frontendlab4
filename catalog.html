@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="uk">
 <head>
@@ -18,25 +19,25 @@
             border-radius: 14px;
         }
 
-            .catalog-search label {
-                font-weight: 700;
-                margin: 0;
-            }
+        .catalog-search label {
+            font-weight: 700;
+            margin: 0;
+        }
 
-            .catalog-search input {
-                flex: 1 1 260px;
-                min-width: 200px;
-                padding: 10px 14px;
-                border: 1px solid #b7c3d5;
-                border-radius: 10px;
-                font: inherit;
-            }
+        .catalog-search input {
+            flex: 1 1 260px;
+            min-width: 200px;
+            padding: 10px 14px;
+            border: 1px solid #b7c3d5;
+            border-radius: 10px;
+            font: inherit;
+        }
 
-                .catalog-search input:focus {
-                    outline: none;
-                    border-color: #1d4ed8;
-                    box-shadow: 0 0 0 3px rgba(29, 78, 216, .15);
-                }
+        .catalog-search input:focus {
+            outline: none;
+            border-color: #1d4ed8;
+            box-shadow: 0 0 0 3px rgba(29, 78, 216, .15);
+        }
 
         .new-label {
             display: inline-block;
@@ -99,7 +100,13 @@
 
             <div class="catalog-search">
                 <label for="catalogSearch">Пошук за назвою:</label>
-                <input id="catalogSearch" type="search" placeholder="Введіть назву товару…" autocomplete="off">
+                <input
+                    id="catalogSearch"
+                    type="search"
+                    placeholder="Введіть назву товару…"
+                    autocomplete="off"
+                    onfocus="this.style.backgroundColor='#f8fbff'"
+                    onblur="this.style.backgroundColor='#fff'">
                 <span id="searchCount" class="muted"></span>
             </div>
 
@@ -252,7 +259,8 @@
         </div>
     </footer>
 
-    <script>(function () {
+    <script>
+        (function () {
             const newTitles = document.querySelectorAll('h3[data-new="true"]');
 
             newTitles.forEach(h3 => {
@@ -309,8 +317,14 @@
             }
 
             searchInput.addEventListener("input", applySearch);
+
+            searchInput.onchange = function () {
+                searchInput.style.borderColor = "green";
+            };
+
             applySearch();
-        })();</script>
+        })();
+    </script>
 
 </body>
 </html>
