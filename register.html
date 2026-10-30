@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Реєстрація — ShopNova</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+
+        <div class="brand">
+
+            <div class="logo">
+                SN
+            </div>
+
+            <div>
+                <h1>ShopNova</h1>
+                <p>Реєстрація нового покупця</p>
+            </div>
+
+        </div>
+
+        <span class="pill">
+            Реєстрація
+        </span>
+
+    </header>
+
+
+    <nav aria-label="Навігація">
+
+        <a href="index.html">
+            Головна
+        </a>
+
+        <a href="catalog.html">
+            Каталог
+        </a>
+
+        <a href="reviews.html">
+            Відгуки про товар
+        </a>
+
+        <a href="feedback.html">
+            Зворотній зв’язок
+        </a>
+
+        <a class="btn" href="cabinet.html">
+            Власний кабінет
+        </a>
+
+       
+        <a class="btn active-page" href="register.html">
+            Зареєструватись
+        </a>
+
+    </nav>
+
+
+    <main class="full">
+
+        <article>
+
+            <h2>
+                Зареєструватись у ShopNova
+            </h2>
+
+            <p class="lead">
+                Створіть обліковий запис покупця,
+                щоб отримати доступ до власного кабінету
+                та історії замовлень.
+            </p>
+
+
+            <form id="registrationForm"
+                  action="cabinet.html"
+                  method="get"
+                  novalidate>
+
+                <fieldset>
+
+                    <legend>
+                        Реєстраційна інформація
+                    </legend>
+
+
+                    <div class="grid2">
+
+
+                        <div class="field">
+
+                            <label for="reg-name">
+                                Прізвище та ім’я
+                            </label>
+
+                            <input id="reg-name"
+                                   name="name"
+                                   type="text"
+                                   minlength="3"
+                                   required>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="reg-email">
+                                E-mail
+                            </label>
+
+                            <input id="reg-email"
+                                   name="email"
+                                   type="email"
+                                   required>
+
+                        </div>
+
+
+                        <div class="field">
+
+                            <label for="reg-password">
+                                Пароль
+                            </label>
+
+                            <input id="reg-password"
+                                   name="password"
+                                   type="password"
+                                   minlength="6"
+                                   required>
+
+                        </div>
+
+
+
+                        <div class="field">
+
+                            <label for="reg-age">
+                                Вік
+                            </label>
+
+                            <input id="reg-age"
+                                   name="age"
+                                   type="number"
+                                   min="14"
+                                   max="120"
+                                   required>
+
+                        </div>
+
+                    </div>
+
+                </fieldset>
+
+
+
+                <label>
+
+                    <input id="agreement"
+                           type="checkbox"
+                           required>
+
+                    Погоджуюсь з правилами користування
+                    магазином та обробкою персональних даних.
+
+                </label>
+
+
+
+                <div id="form-message"
+                     style="margin-top: 15px; font-weight: bold;"></div>
+
+
+
+                <div class="actions">
+
+                    <button class="btn primary"
+                            type="submit">
+                        Зареєструватись
+                    </button>
+
+
+                    <a class="btn"
+                       href="index.html">
+                        Скасувати
+                    </a>
+
+                </div>
+
+            </form>
+
+        </article>
+
+    </main>
+
+
+    <footer>
+
+        <div class="footer-grid">
+
+
+            <div>
+
+                <strong>
+                    ShopNova
+                </strong>
+
+                <br>
+
+                Товари для дому та життя.
+
+            </div>
+
+
+            <div>
+
+                <a href="cabinet.html">
+                    Власний кабінет
+                </a>
+
+                <br>
+
+                <a href="feedback.html">
+                    Зворотній зв’язок
+                </a>
+
+            </div>
+
+
+            <div>
+                © 2026 ShopNova
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script>
+
+        document
+            .getElementById("registrationForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+
+                const name =
+                    document
+                        .getElementById("reg-name")
+                        .value
+                        .trim();
+
+
+                const email =
+                    document
+                        .getElementById("reg-email")
+                        .value
+                        .trim();
+
+
+                const password =
+                    document
+                        .getElementById("reg-password")
+                        .value;
+
+
+                const age =
+                    Number(
+                        document
+                            .getElementById("reg-age")
+                            .value
+                    );
+
+
+                const agreement =
+                    document
+                        .getElementById("agreement")
+                        .checked;
+
+
+                const message =
+                    document
+                        .getElementById("form-message");
+
+
+                message.textContent = "";
+
+
+
+              
+                const namePattern =
+                    /^[А-ЯІЇЄҐа-яіїєґA-Za-z' -]+$/;
+
+
+                if (name.length === 0) {
+
+                    message.textContent =
+                        "Помилка: введіть прізвище та ім’я.";
+
+                    return;
+                }
+
+
+                if (name.length < 3) {
+
+                    message.textContent =
+                        "Помилка: прізвище та ім’я повинні містити не менше 3 символів.";
+
+                    return;
+                }
+
+
+                if (!namePattern.test(name)) {
+
+                    message.textContent =
+                        "Помилка: прізвище та ім’я не повинні містити цифр або спеціальних символів.";
+
+                    return;
+                }
+
+
+
+                
+                const emailPattern =
+                    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+
+                if (email.length === 0) {
+
+                    message.textContent =
+                        "Помилка: введіть E-mail.";
+
+                    return;
+                }
+
+
+                if (!emailPattern.test(email)) {
+
+                    message.textContent =
+                        "Помилка: введіть коректний E-mail (наприклад, user@mail.com).";
+
+                    return;
+                }
+
+
+
+               
+                if (password.length === 0) {
+
+                    message.textContent =
+                        "Помилка: введіть пароль.";
+
+                    return;
+                }
+
+
+                if (password.length < 6) {
+
+                    message.textContent =
+                        "Помилка: пароль повинен містити не менше 6 символів.";
+
+                    return;
+                }
+
+
+                if (password.length > 32) {
+
+                    message.textContent =
+                        "Помилка: пароль не повинен перевищувати 32 символи.";
+
+                    return;
+                }
+
+
+
+              
+                if (
+                    isNaN(age) ||
+                    age < 14 ||
+                    age > 120
+                ) {
+
+                    message.textContent =
+                        "Помилка: вік повинен бути від 14 до 120 років.";
+
+                    return;
+                }
+
+
+
+                
+                if (!agreement) {
+
+                    message.textContent =
+                        "Помилка: необхідно погодитися з правилами користування магазином.";
+
+                    return;
+                }
+
+
+
+                /* Успішна реєстрація */
+                message.textContent =
+                    "Реєстрація успішна! Зачекайте, будь ласка…";
+
+
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "cabinet.html";
+
+                }, 1500);
+
+            });
+
+
+
+        
+        document
+            .getElementById("registrationForm")
+            .addEventListener("reset", function () {
+
+                document.getElementById("form-message").textContent = "";
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>

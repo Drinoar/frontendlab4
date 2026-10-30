@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Відгуки про товар — ShopNova</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <div class="logo">SN</div>
+            <div>
+                <h1>ShopNova</h1>
+                <p>Відгуки покупців про товари</p>
+            </div>
+        </div>
+        <span class="pill">Відгуки</span>
+    </header>
+
+    <nav aria-label="Навігація">
+        <a href="index.html">Головна</a>
+        <a href="catalog.html">Каталог</a>
+        <a href="feedback.html">Зворотній зв’язок</a>
+        <a class="btn" href="cabinet.html">Власний кабінет</a>
+        <a class="btn" href="register.html">Зареєструватись</a>
+    </nav>
+
+    <main class="full">
+        <article>
+            <h2>Що кажуть покупці</h2>
+            <p class="lead">Реальні відгуки клієнтів про товари з каталогу ShopNova.</p>
+
+            <div class="review-grid">
+                <section class="review">
+                    <div class="stars">★★★★★</div>
+                    <h3>Ірина, Київ</h3>
+                    <p>«Футболка Classic Cotton чудова — якісна бавовна, не сідає після прання. Рекомендую!»</p>
+                </section>
+                <section class="review">
+                    <div class="stars">★★★★★</div>
+                    <h3>Максим, Львів</h3>
+                    <p>«Диван Comfort Line перевершив очікування: зручний, міцний каркас, швидка доставка.»</p>
+                </section>
+                <section class="review">
+                    <div class="stars">★★★★☆</div>
+                    <h3>Олена, Харків</h3>
+                    <p>«Смартфон Nova X20 — камера супер, але батарея тримає трохи менше, ніж очікувала.»</p>
+                </section>
+                <section class="review">
+                    <div class="stars">★★★★★</div>
+                    <h3>Андрій, Одеса</h3>
+                    <p>«Принтер LaserJet Pro працює швидко і тихо. Ідеальний для домашнього офісу.»</p>
+                </section>
+                <section class="review">
+                    <div class="stars">★★★★☆</div>
+                    <h3>Марія, Дніпро</h3>
+                    <p>«Стіл Office Wood гарний і міцний, але збирання зайняло більше часу, ніж очікувалося.»</p>
+                </section>
+            </div>
+
+            <section style="margin-top:28px">
+                <h3>Залишити відгук</h3>
+                <form id="reviewForm" action="#" method="post" novalidate>
+                    <div class="grid2">
+                        <div class="field">
+                            <label for="review-name">Ім’я</label>
+                            <input id="review-name" name="review-name" type="text" minlength="2" required>
+                        </div>
+                        <div class="field">
+                            <label for="review-rating">Оцінка</label>
+                            <select id="review-rating" name="review-rating" required>
+                                <option value="">Оберіть оцінку</option>
+                                <option value="5">5 — відмінно</option>
+                                <option value="4">4 — добре</option>
+                                <option value="3">3 — задовільно</option>
+                                <option value="2">2 — потребує покращення</option>
+                                <option value="1">1 — незадовільно</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label for="review-text">Ваш відгук</label>
+                        <textarea id="review-text" name="review-text" maxlength="500" placeholder="Напишіть короткий відгук..." required></textarea>
+                        <small class="muted">Максимум 500 символів.</small>
+                    </div>
+
+                    <div id="review-message" style="margin-top: 15px; font-weight: bold;"></div>
+
+                    <div class="actions">
+                        <button class="btn primary" type="submit">Опублікувати</button>
+                        <button class="btn" type="reset">Очистити</button>
+                        <a class="btn" href="index.html">← На головну</a>
+                    </div>
+                </form>
+            </section>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div><strong>ShopNova</strong><br>Товари для майбутнього.</div>
+            <div>
+                <a href="index.html">Головна</a><br>
+                <a href="catalog.html">Каталог</a><br>
+                <a href="feedback.html">Зворотній зв’язок</a>
+            </div>
+            <div>© 2026 ShopNova</div>
+        </div>
+    </footer>
+
+    <script>
+    document
+            .getElementById("reviewForm")
+            .addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                const name =
+                    document.getElementById("review-name").value.trim();
+
+                const rating =
+                    document.getElementById("review-rating").value;
+
+                const text =
+                    document.getElementById("review-text").value.trim();
+
+                const message =
+                    document.getElementById("review-message");
+
+                message.textContent = "";
+
+
+                const namePattern =
+                    /^[А-ЯІЇЄҐа-яіїєґA-Za-z' -]+$/;
+
+                if (name.length < 2) {
+                    message.textContent =
+                        "Помилка: ім’я повинно містити не менше 2 символів.";
+                    return;
+                }
+
+                if (!namePattern.test(name)) {
+                    message.textContent =
+                        "Помилка: ім’я не повинно містити цифр або спеціальних символів.";
+                    return;
+                }
+
+
+                if (rating === "") {
+                    message.textContent =
+                        "Помилка: будь ласка, оберіть оцінку.";
+                    return;
+                }
+
+                if (Number(rating) < 1 || Number(rating) > 5) {
+                    message.textContent =
+                        "Помилка: оцінка повинна бути від 1 до 5.";
+                    return;
+                }
+
+
+                if (text.length === 0) {
+                    message.textContent =
+                        "Помилка: будь ласка, напишіть текст відгуку.";
+                    return;
+                }
+
+                if (text.length < 10) {
+                    message.textContent =
+                        "Помилка: відгук повинен містити не менше 10 символів.";
+                    return;
+                }
+
+                if (text.length > 500) {
+                    message.textContent =
+                        "Помилка: відгук не повинен перевищувати 500 символів.";
+                    return;
+                }
+
+
+                message.textContent =
+                    "Дякуємо! Ваш відгук буде опубліковано після перевірки модератором.";
+
+                document.getElementById("reviewForm").reset();
+            });
+
+
+        document
+            .getElementById("reviewForm")
+            .addEventListener("reset", function () {
+                document.getElementById("review-message").textContent = "";
+            });</script>
+
+</body>
+</html>

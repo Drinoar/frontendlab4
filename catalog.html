@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог — ShopNova</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .catalog-search {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 18px 0 22px;
+            padding: 14px 18px;
+            background: #f2f6ff;
+            border: 1px solid #dbe3ef;
+            border-radius: 14px;
+        }
+
+            .catalog-search label {
+                font-weight: 700;
+                margin: 0;
+            }
+
+            .catalog-search input {
+                flex: 1 1 260px;
+                min-width: 200px;
+                padding: 10px 14px;
+                border: 1px solid #b7c3d5;
+                border-radius: 10px;
+                font: inherit;
+            }
+
+                .catalog-search input:focus {
+                    outline: none;
+                    border-color: #1d4ed8;
+                    box-shadow: 0 0 0 3px rgba(29, 78, 216, .15);
+                }
+
+        .new-label {
+            display: inline-block;
+            margin-left: 10px;
+            color: #e00000;
+            font-weight: 800;
+            font-size: 1.2em;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            vertical-align: middle;
+            border-bottom: 2px solid #e00000;
+            padding-bottom: 1px;
+        }
+
+        .project.hidden {
+            display: none;
+        }
+
+        .no-results {
+            grid-column: 1 / -1;
+            padding: 24px;
+            text-align: center;
+            background: #fff5f5;
+            border: 1px dashed #e0a0a0;
+            border-radius: 14px;
+            color: #b00020;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="logo">SN</div>
+            <div>
+                <h1>ShopNova</h1>
+                <p>Каталог товарів магазину</p>
+            </div>
+        </div>
+        <span class="pill">Каталог</span>
+    </header>
+
+    <nav aria-label="Навігація">
+        <a href="index.html">Головна</a>
+        <a href="catalog.html" class="active-page">Каталог</a>
+        <a href="reviews.html">Відгуки про товар</a>
+        <a href="feedback.html">Зворотній зв’язок</a>
+        <a class="btn primary" href="cabinet.html">Перейти у власний кабінет</a>
+        <a class="btn" href="register.html">Зареєструватись</a>
+    </nav>
+
+    <main class="full">
+        <article>
+            <h2>Каталог товарів ShopNova</h2>
+            <p class="lead">
+                Добірка популярних товарів у категоріях: одяг, меблі,
+                телефони та оргтехніка.
+            </p>
+
+            <div class="catalog-search">
+                <label for="catalogSearch">Пошук за назвою:</label>
+                <input id="catalogSearch" type="search" placeholder="Введіть назву товару…" autocomplete="off">
+                <span id="searchCount" class="muted"></span>
+            </div>
+
+            <div class="project-grid">
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=1000&q=80" alt="Футболка">
+                    <div class="content">
+                        <h3 data-new="true">Футболка Classic Cotton</h3>
+                        <p class="country">Країна: Україна</p>
+                        <ul>
+                            <li>Матеріал: 100% бавовна</li>
+                            <li>Розміри: S–XXL</li>
+                            <li>Колір: білий</li>
+                            <li>Щільність: 180 г/м²</li>
+                            <li>Прання: 30°C</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=80" alt="Диван">
+                    <div class="content">
+                        <h3>Диван Comfort Line</h3>
+                        <p class="country">Країна: Польща</p>
+                        <ul>
+                            <li>Матеріал: велюр</li>
+                            <li>Розміри: 220×95×85 см</li>
+                            <li>Каркас: дерево</li>
+                            <li>Наповнювач: пінополіуретан</li>
+                            <li>Гарантія: 24 місяці</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=1000&q=80" alt="Смартфон">
+                    <div class="content">
+                        <h3>Смартфон Nova X20</h3>
+                        <p class="country">Країна: Південна Корея</p>
+                        <ul>
+                            <li>Екран: 6.5" AMOLED</li>
+                            <li>Пам’ять: 256 ГБ</li>
+                            <li>Камера: 108 МП</li>
+                            <li>Батарея: 5000 мА·год</li>
+                            <li>5G: підтримка</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&w=1000&q=80" alt="Принтер">
+                    <div class="content">
+                        <h3>Принтер LaserJet Pro</h3>
+                        <p class="country">Країна: Японія</p>
+                        <ul>
+                            <li>Тип: лазерний</li>
+                            <li>Швидкість: 30 стор/хв</li>
+                            <li>Двосторонній друк</li>
+                            <li>Wi-Fi / USB</li>
+                            <li>Гарантія: 24 місяці</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1000&q=80" alt="Кросівки">
+                    <div class="content">
+                        <h3>Кросівки RunFlex</h3>
+                        <p class="country">Країна: Німеччина</p>
+                        <ul>
+                            <li>Матеріал: текстиль + гума</li>
+                            <li>Розміри: 36–46</li>
+                            <li>Вага: 280 г</li>
+                            <li>Амортизація: EVA</li>
+                            <li>Сезон: весна/літо</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=80" alt="Стіл">
+                    <div class="content">
+                        <h3>Стіл робочий Office Wood</h3>
+                        <p class="country">Країна: Україна</p>
+                        <ul>
+                            <li>Матеріал: дуб</li>
+                            <li>Розміри: 140×70×75 см</li>
+                            <li>Покриття: лак</li>
+                            <li>Вага: 32 кг</li>
+                            <li>Гарантія: 24 місяці</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=80" alt="Смарт-годинник">
+                    <div class="content">
+                        <h3>Смарт-годинник Nova Watch</h3>
+                        <p class="country">Країна: Китай</p>
+                        <ul>
+                            <li>Екран: 1.8" AMOLED</li>
+                            <li>Батарея: 14 днів</li>
+                            <li>GPS: є</li>
+                            <li>Водозахист: 5 ATM</li>
+                            <li>Сумісність: Android/iOS</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <section class="project">
+                    <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=1000&q=80" alt="Сканер">
+                    <div class="content">
+                        <h3>Сканер DocScan 500</h3>
+                        <p class="country">Країна: Німеччина</p>
+                        <ul>
+                            <li>Роздільна здатність: 1200 dpi</li>
+                            <li>Швидкість: 25 стор/хв</li>
+                            <li>Формат: A4</li>
+                            <li>Інтерфейс: USB 3.0</li>
+                            <li>Гарантія: 12 місяців</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+
+            <p style="margin-top: 24px">
+                <a class="btn primary" href="cabinet.html">Перейти у власний кабінет</a>
+            </p>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <strong>ShopNova</strong><br>
+                Каталог товарів для дому та життя.
+            </div>
+            <div>
+                <a href="index.html">Головна</a><br>
+                <a href="reviews.html">Відгуки про товар</a><br>
+                <a href="feedback.html">Зворотній зв’язок</a>
+            </div>
+            <div>
+                <a href="register.html">Зареєструватись</a><br>
+                <a href="cabinet.html">Власний кабінет</a><br><br>
+                © 2026 ShopNova
+            </div>
+        </div>
+    </footer>
+
+    <script>(function () {
+            const newTitles = document.querySelectorAll('h3[data-new="true"]');
+
+            newTitles.forEach(h3 => {
+                const span = document.createElement("span");
+                span.className = "new-label";
+                span.setAttribute("aria-label", "Новинка");
+                h3.appendChild(span);
+
+                const text = "Новинка!";
+                let i = 0;
+
+                setTimeout(function type() {
+                    if (i <= text.length) {
+                        span.textContent = text.slice(0, i);
+                        i++;
+                        setTimeout(type, 140);
+                    }
+                }, 600);
+            });
+
+            const searchInput = document.getElementById("catalogSearch");
+            const searchCount = document.getElementById("searchCount");
+            const grid = document.querySelector(".project-grid");
+
+            if (!searchInput || !grid) return;
+
+            const projects = Array.from(grid.querySelectorAll(".project"));
+
+            function applySearch() {
+                const query = searchInput.value.trim().toLowerCase();
+
+                const old = grid.querySelector(".no-results");
+                if (old) old.remove();
+
+                let visible = 0;
+
+                projects.forEach(p => {
+                    const title = (p.querySelector("h3")?.textContent || "").toLowerCase();
+                    const match = title.includes(query);
+                    p.classList.toggle("hidden", !match);
+                    if (match) visible++;
+                });
+
+                searchCount.textContent = query
+                    ? `Знайдено: ${visible} з ${projects.length}`
+                    : `Усього товарів: ${projects.length}`;
+
+                if (visible === 0) {
+                    const empty = document.createElement("div");
+                    empty.className = "no-results";
+                    empty.textContent = "За запитом «" + searchInput.value.trim() + "» товарів не знайдено.";
+                    grid.appendChild(empty);
+                }
+            }
+
+            searchInput.addEventListener("input", applySearch);
+            applySearch();
+        })();</script>
+
+</body>
+</html>

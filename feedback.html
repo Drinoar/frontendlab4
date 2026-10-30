@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Зворотний зв’язок — ShopNova</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .details-wrap {
+            position: relative;
+        }
+
+        #details:hover {
+            background: #fff8e1;
+            border: 2px solid #f59e0b;
+            box-shadow: 0 8px 20px rgba(245, 158, 11, .45);
+        }
+
+        .details-tooltip {
+            position: absolute;
+            top: 50%;
+            left: calc(100% + 14px);
+            transform: translateY(-50%) translateX(-8px);
+            width: 250px;
+            padding: 12px 14px;
+            background: #13254a;
+            color: #fff;
+            border-radius: 10px;
+            font-size: 14px;
+            line-height: 1.4;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .25);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity .25s ease, transform .25s ease;
+            z-index: 20;
+        }
+
+            .details-tooltip::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: -8px;
+                transform: translateY(-50%);
+                border: 8px solid transparent;
+                border-right-color: #13254a;
+            }
+
+        .details-wrap:hover .details-tooltip {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+        }
+
+        @media (max-width: 900px) {
+            .details-tooltip {
+                position: static;
+                transform: none;
+                width: auto;
+                margin-top: 10px;
+                opacity: 1;
+            }
+
+                .details-tooltip::before {
+                    display: none;
+                }
+
+            .details-wrap:hover .details-tooltip {
+                transform: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand">
+            <div class="logo" aria-label="Логотип ShopNova">SN</div>
+            <div>
+                <h1>ShopNova</h1>
+                <p>Зворотний зв’язок та комунікація з магазином</p>
+            </div>
+        </div>
+        <span class="pill">Комунікація</span>
+    </header>
+
+    <nav aria-label="Навігація">
+        <a href="index.html">Головна</a>
+        <a href="catalog.html">Каталог</a>
+        <a class="btn primary" href="cabinet.html">Власний кабінет</a>
+        <a class="btn" href="register.html">Зареєструватись</a>
+    </nav>
+
+    <main class="full">
+        <article>
+            <h2>Форма зворотного зв’язку</h2>
+            <p class="lead">
+                Заповніть форму, щоб зв’язатися з командою ShopNova,
+                запропонувати співпрацю або повідомити про помилку.
+            </p>
+
+            <form id="feedbackForm" action="#" method="post" novalidate>
+                <fieldset>
+                    <legend>Персональна інформація</legend>
+
+                    <div class="grid2">
+                        <div class="field">
+                            <label for="fullname">Прізвище та ім’я</label>
+                            <input id="fullname" name="fullname" type="text" minlength="3" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="email">E-mail</label>
+                            <input id="email" name="email" type="email" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="age">Вік</label>
+                            <input id="age" name="age" type="number" min="14" max="120" required>
+                        </div>
+
+                        <div class="field">
+                            <label for="education">Освіта</label>
+                            <select id="education" name="education" required>
+                                <option value="">Оберіть...</option>
+                                <option value="повна">повна</option>
+                                <option value="неповна">неповна</option>
+                                <option value="вища">вища</option>
+                                <option value="професійна">професійна</option>
+                            </select>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="grid2">
+                    <div class="field">
+                        <label for="purpose">Мета зворотного зв’язку</label>
+                        <select id="purpose" name="purpose" required>
+                            <option value="">Оберіть мету...</option>
+                            <option value="співпраця">співпраця</option>
+                            <option value="скарга">скарга на порушення права власності</option>
+                            <option value="пропозиція">пропозиція</option>
+                            <option value="помилка">наявність помилки</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="cabinet">Власний кабінет</label>
+                        <input id="cabinet" name="cabinet" type="text"
+                               value="Реєстрація / вхід доступні після надсилання форми" readonly>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label for="details">Детально</label>
+                    <div class="details-wrap">
+                        <textarea id="details" name="details" maxlength="1000"
+                                  placeholder="Опишіть ваше питання або пропозицію (до 1000 символів)..."
+                                  required></textarea>
+                        <div class="details-tooltip" role="tooltip">
+                            Ваша думка для нас важлива! Конкретизуйте мету звернення, будь ласка.
+                        </div>
+                    </div>
+                    <small class="muted">Максимум 1000 символів.</small>
+                </div>
+
+                <label>
+                    <input type="checkbox" id="consent" name="consent" required>
+                    Я погоджуюсь на обробку наданої інформації.
+                </label>
+
+                <div id="form-message" style="margin-top: 15px; font-weight: bold;"></div>
+
+                <div class="actions">
+                    <button class="btn primary" type="submit">Надіслати</button>
+                    <button class="btn" type="reset">Очистити</button>
+                </div>
+            </form>
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <strong>ShopNova</strong><br>
+                Ми відкриті до нових ідей.
+            </div>
+            <div>
+                <a href="index.html">Головна</a><br>
+                <a href="catalog.html">Каталог</a><br>
+                <a href="reviews.html">Відгуки про товар</a>
+            </div>
+            <div>
+                <a href="register.html">Реєстрація</a><br>
+                <a href="cabinet.html">Власний кабінет</a><br><br>
+                Тел.: +380 44 555 12 34
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("feedbackForm").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const fullname = document.getElementById("fullname").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const age = Number(document.getElementById("age").value);
+            const education = document.getElementById("education").value;
+            const purpose = document.getElementById("purpose").value;
+            const details = document.getElementById("details").value.trim();
+            const consent = document.getElementById("consent").checked;
+            const message = document.getElementById("form-message");
+
+            message.textContent = "";
+
+            const namePattern = /^[А-ЯІЇЄҐа-яіїєґA-Za-z' -]+$/;
+
+            if (fullname.length < 3) {
+                message.textContent = "Помилка: прізвище та ім’я повинні містити не менше 3 символів.";
+                return;
+            }
+            if (!namePattern.test(fullname)) {
+                message.textContent = "Помилка: прізвище та ім’я не повинні містити цифр або спеціальних символів.";
+                return;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                message.textContent = "Помилка: введіть коректний E-mail.";
+                return;
+            }
+
+            if (isNaN(age) || age < 14 || age > 120) {
+                message.textContent = "Помилка: вік повинен бути від 14 до 120 років.";
+                return;
+            }
+
+            if (education === "") {
+                message.textContent = "Помилка: виберіть рівень освіти.";
+                return;
+            }
+
+            if (purpose === "") {
+                message.textContent = "Помилка: виберіть мету зворотного зв’язку.";
+                return;
+            }
+
+            if (details.length === 0) {
+                message.textContent = "Помилка: заповніть поле «Детально».";
+                return;
+            }
+            if (details.length > 1000) {
+                message.textContent = "Помилка: текст не повинен перевищувати 1000 символів.";
+                return;
+            }
+
+            if (!consent) {
+                message.textContent = "Помилка: необхідно погодитися на обробку інформації.";
+                return;
+            }
+
+            message.textContent = "Форму успішно перевірено та надіслано!";
+        });
+
+        document.getElementById("feedbackForm").addEventListener("reset", function () {
+            document.getElementById("form-message").textContent = "";
+        });
+    </script>
+
+</body>
+</html>
