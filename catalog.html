@@ -100,13 +100,12 @@
 
             <div class="catalog-search">
                 <label for="catalogSearch">Пошук за назвою:</label>
-                <input
-                    id="catalogSearch"
-                    type="search"
-                    placeholder="Введіть назву товару…"
-                    autocomplete="off"
-                    onfocus="this.style.backgroundColor='#f8fbff'"
-                    onblur="this.style.backgroundColor='#fff'">
+                <input id="catalogSearch"
+                       type="search"
+                       placeholder="Введіть назву товару…"
+                       autocomplete="off"
+                       onfocus="this.style.backgroundColor='#f8fbff'"
+                       onblur="this.style.backgroundColor='#fff'">
                 <span id="searchCount" class="muted"></span>
             </div>
 
@@ -287,13 +286,13 @@
 
             if (!searchInput || !grid) return;
 
-            const projects = Array.from(grid.querySelectorAll(".project"));
+            // Отримання карток товарів за назвою класу project.
+            const projects = Array.from(grid.getElementsByClassName("project"));
 
             function applySearch() {
                 const query = searchInput.value.trim().toLowerCase();
 
                 const old = grid.querySelector(".no-results");
-                if (old) old.remove();
 
                 let visible = 0;
 
@@ -312,7 +311,15 @@
                     const empty = document.createElement("div");
                     empty.className = "no-results";
                     empty.textContent = "За запитом «" + searchInput.value.trim() + "» товарів не знайдено.";
-                    grid.appendChild(empty);
+
+                    // replaceWith() замінює попереднє повідомлення новим.
+                    if (old) {
+                        old.replaceWith(empty);
+                    } else {
+                        grid.appendChild(empty);
+                    }
+                } else if (old) {
+                    old.remove();
                 }
             }
 
